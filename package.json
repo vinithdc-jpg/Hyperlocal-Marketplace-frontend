@@ -12,6 +12,7 @@
     "@hookform/resolvers": "^5.4.0",
     "@tanstack/react-query": "^5.101.0",
     "axios": "^1.18.0",
+    "clsx": "^2.1.1",
     "leaflet": "^1.9.4",
     "lucide-react": "^1.21.0",
     "next": "16.2.9",
@@ -20,6 +21,7 @@
     "react-hook-form": "^7.79.0",
     "react-hot-toast": "^2.6.0",
     "react-leaflet": "^5.0.0",
+    "socket.io-client": "^4.8.1",
     "zod": "^4.4.3",
     "zustand": "^5.0.14"
   },

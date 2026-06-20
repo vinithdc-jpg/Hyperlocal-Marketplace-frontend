@@ -6,6 +6,7 @@ import { useAuth } from '@/context/AuthContext';
 import Input from '@/components/common/Input';
 import Button from '@/components/common/Button';
 import Link from 'next/link';
+import { getUserLocation } from '@/lib/utils';
 
 export default function Register() {
   const router = useRouter();
@@ -77,11 +78,18 @@ export default function Register() {
 
     try {
       setLoading(true);
+      let location = null;
+      try {
+        location = await getUserLocation();
+      } catch {
+        // location optional at registration
+      }
       await register(
         formData.name,
         formData.email,
         formData.password,
-        formData.phone
+        formData.phone,
+        location
       );
       router.push('/dashboard');
     } catch (error) {
@@ -94,9 +102,12 @@ export default function Register() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
-          Create Account
+        <h1 className="text-3xl font-bold text-center mb-2">
+          Join NeighborMart
         </h1>
+        <p className="text-center text-muted mb-8">
+          Buy and sell in your neighborhood
+        </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input
